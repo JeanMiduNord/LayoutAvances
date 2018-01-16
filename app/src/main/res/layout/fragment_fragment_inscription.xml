@@ -1,13 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.m2i.layoutavance.TestFragmentB"
-    android:background="@color/colorAccent">
+    android:layout_height="match_parent"
+    tools:context="com.m2i.layoutavance.FragmentInscription"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,15 +13,24 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="test B"
-            android:id="@+id/testViewFragmentB"/>
+            android:text="Inscription" />
 
-        <Button
-            android:id="@+id/btnSup"
+        <EditText
+            android:id="@+id/edtUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Supprimer"
-            />
+            android:ems="10"
+            android:inputType="textPersonName"
+             />
+
+        <Button
+            android:id="@+id/btnValid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valider" />
+
     </LinearLayout>
+
+
 
 </FrameLayout>

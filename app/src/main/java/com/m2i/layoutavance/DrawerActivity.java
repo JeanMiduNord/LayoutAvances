@@ -1,5 +1,6 @@
 package com.m2i.layoutavance;
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,8 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.m2i.model.User;
+
 public class DrawerActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,9 @@ public class DrawerActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        this.user = new User();
+
     }
 
     @Override
@@ -72,11 +80,11 @@ public class DrawerActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+            navigateToFragment(new TestFragmentB());
+        } else if (id == R.id.nav_inscription) {
+            navigateToFragment(new FragmentInscription() );
+        } else if (id == R.id.nav_random_user) {
+            navigateToFragment(new FragmentRandomUser());
         } else if (id == R.id.nav_manage) {
 
         }
@@ -85,4 +93,25 @@ public class DrawerActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * Affichage du fragment passé en argument de
+     * on NavigationItemSelected
+     * @param targetFragment
+     */
+    private void navigateToFragment(Fragment targetFragment){
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer,targetFragment)
+                .commit();
+    }
+
+    public User getUser(){
+        return user;
+    }
+
+    public void goToFragmentB(){
+        navigateToFragment(new TestFragmentB());
+    }
+
 }
